@@ -7,8 +7,11 @@ int print_X_line()  //判断是否需要继续输出，返回需要再输出的�
 {
     printf("\033[7m more? \033[m");
 
+    FILE* fp_tty = fopen("/dev/tty", "r");
+    if (fp_tty == NULL) exit(1);
+
     int c;
-    while ((c = getchar()) != EOF)
+    while ((c = getc(fp_tty)) != EOF)  //确保从键盘读入数据（避免重定向输入带来的错误）
     {
         if (c == 'q') return 0;       //再输出0行（即退出）
         if (c == ' ') return PAGELEN; //再输出PAGELEN行（即输出一屏）
