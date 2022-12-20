@@ -3,7 +3,11 @@
 
 int main()
 {
-    time_t t = time(NULL);
+    // time_t t = time(NULL);
+
+    time_t t;
+    time(&t);
     printf("%s", ctime(&t));
+
     return 0;
 }
