@@ -8,10 +8,10 @@ void ls(char path[])
     if (dir_ptr == NULL) fprintf(stderr, "ls1: can't open %s\n", path);
     else
     {
-        struct dirent* rec; //指向各条记录
+        struct dirent* rec; //用于指向各条记录
         while ((rec = readdir(dir_ptr)) != NULL)
             puts(rec->d_name); //输出普通文件或子目录的名称
-            
+
         closedir(dir_ptr);
     }
 }
